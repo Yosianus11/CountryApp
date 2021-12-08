@@ -1,0 +1,31 @@
+<form class="m5">
+  <div class="input-group mb-3">
+    <input type="text" name="Icountry" placeholder="Enter Country..." class="form-control" [(ngModel)]="Icountry" />
+  </div>
+
+  <div class="input-group mb-3">
+    <input type="number" name="Icountry_code" placeholder="Enter Country_code..." class="form-control" [(ngModel)]="Icountry_code" />
+  </div>
+
+  <div class="input-group mb-3">
+    <input type="text" name="Iiso_code" placeholder="Enter iso_code..." class="form-control" [(ngModel)]="Iiso_code" />
+  </div>
+  
+  <div class="input-group mb-3">
+    <input type="number" name="Ipopulation" placeholder="Enter population..." class="form-control" [(ngModel)]="Ipopulation" />
+  </div>
+
+  <div class="input-group mb-3">
+    <input type="number" name="Iarea" placeholder="Enter area..." class="form-control" [(ngModel)]="Iarea" />
+  </div>
+
+  <div class="input-group mb-3">
+    <input type="text" name="IGDP" placeholder="Enter GDP..." class="form-control" [(ngModel)]="IGDP" />
+  </div>
+
+  <div class="input-group mb-3">
+    <input type="text" name="Iimage" placeholder="Enter Link image..." class="form-control" [(ngModel)]="Iimage" />
+  </div>
+  
+  <input type="submit" value="Add Country" class="btn btn-primary" (click)="addCountry()" />
+</form>

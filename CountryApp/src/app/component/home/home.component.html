@@ -1,0 +1,125 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Country App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav" [ngSwitch]="menus">
+      <ul class="navbar-nav" *ngSwitchCase="1">
+        <li class="nav-item">
+          <a class="nav-link active" href="#" aria-current="page" (click)="changeMenus(1,1)">Home</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="#" (click)="changeMenus(2,2)">All Country</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="#" (click)="changeMenus(4,2)">Add Country</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav" *ngSwitchCase="2">
+        <li class="nav-item">
+          <a class="nav-link" href="#" aria-current="page" (click)="changeMenus(1,1)">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#" (click)="changeMenus(2,2)">All Country</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="#" (click)="changeMenus(4,2)">Add Country</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav" *ngSwitchCase=3>
+        <li class="nav-item">
+          <a class="nav-link active" href="#" aria-current="page" (click)="changeMenus(1,1)">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" (click)="changeMenus(2,2)">All Country</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="#" (click)="changeMenus(4,2)">Add Country</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav" *ngSwitchCase=4>
+        <li class="nav-item">
+          <a class="nav-link active" href="#" aria-current="page" (click)="changeMenus(1,1)">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" (click)="changeMenus(2,2)">All Country</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="#" (click)="changeMenus(4,2)">Add Country</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+<div [ngSwitch]="menus">
+  <div *ngSwitchCase="1">
+    <div class="header">
+      <p>Most Highest GDP</p>
+    </div>
+    <div class="row m-5">
+      <div class="col-sm-4 mb-5" *ngFor="let n of numSequence(3) let i = index;">
+        <div class="card" >
+          <img src={{GDP[i].image}} class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Country : {{GDP[i].country}}</h5>
+            <p class="card-text">GDP :{{GDP[i].GDP | curr}}</p>
+            <p class="card-text"><small class="text-muted">Area : {{GDP[i].area | larea}}</small></p>
+            <a href="#" class="btn btn-primary" (click)="sdetailCountry(countries[i].country,3)">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="header">
+      <p>Most Highest Population</p>
+    </div>
+    <div class="row m-5">
+      <div class="col-sm-4 mb-5" *ngFor="let n of numSequence(3) let i = index;">
+        <div class="card" >
+          <img src={{population[i].image}} class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Country : {{population[i].country}}</h5>
+            <p class="card-text">Population :{{population[i].population|area}}</p>
+            <p class="card-text"><small class="text-muted">Area : {{population[i].area | larea}}</small></p>
+            <a href="#" class="btn btn-primary" (click)="sdetailCountry(countries[i].country,3)">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="header">
+      <p>Most Highest Area</p>
+    </div>
+    <div class="row m-5">
+      <div class="col-sm-4 mb-5" *ngFor="let n of numSequence(3) let i = index;">
+        <div class="card" >
+          <img src={{area[i].image}} class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Country : {{area[i].country}}</h5>
+            <p class="card-text">Area :{{area[i].area|larea}}</p>
+            <p class="card-text"><small class="text-muted">GDP : {{area[i].GDP | curr}}</small></p>
+            <a href="#" class="btn btn-primary" (click)="sdetailCountry(countries[i].country,3)">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div *ngSwitchCase="2">
+    <app-all-country [countries]="countries" [menus]="menus" [homes]="homes" (changeMenu)="changeMenus($event,2)">
+    </app-all-country>
+  </div>
+  <div *ngSwitchCase="3">
+    <app-detail-country [selectedCountry]="selectCountry" [countries]="countries" [menus]="menus" [homes]="homes"
+      (changeSubMenu)="changeMenus($event,1)"></app-detail-country>
+  </div>
+  <div *ngSwitchCase="4">
+    <app-add-country (newCountry)="addCountry($event)"></app-add-country>
+  </div>
+  <div *ngSwitchCaseDefault>
+    <h4>Home (list the most largert and pupulated)</h4>
+  </div>
+</div>

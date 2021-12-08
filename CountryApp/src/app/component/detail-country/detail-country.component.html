@@ -1,0 +1,35 @@
+<div class="header">
+  <p>Detail Country</p>
+</div>
+<div class="row d-flex justify-content-center" >
+  <div class="col-sm-8" *ngFor="let country of countries" [ngSwitch]="country.country">
+    <div class="card" *ngSwitchCase=selectedCountry>
+     
+      <div class="card-body">
+        <h5 class="card-title text-center">Country-: {{ country.country }}</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Country Code : {{ country.country_code}}</li>
+          <li class="list-group-item">Iso Code     : {{ country.population}}</li>
+          <li class="list-group-item">Area         : {{ country.area| larea}}</li>
+          <li class="list-group-item">GDP          : {{ country.GDP | curr}}</li>
+          <li class="list-group-item">Population   : {{ country.population | area:'2'}}</li>
+        </ul>
+        <div [ngSwitch]="homes" class="mb-2 mt-2">
+          <div *ngSwitchCase="1">
+            <button class="btn btn-sm btn-primary" (click)="changeSubMenus(1,1)">Back Previous</button>
+          </div>
+          <div *ngSwitchCase="2">
+            <button class="btn btn-sm btn-primary" (click)="changeSubMenus(2,2)">Back Previous</button>
+          </div>
+        </div>
+        <img src={{country.image}} class="card-img-top" alt="..." style="max-width: 100%;height: 30%;">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  
+

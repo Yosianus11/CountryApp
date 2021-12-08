@@ -1,0 +1,31 @@
+<div [ngSwitch]="menus">
+  <div *ngSwitchCase="2">
+    <div class="header">
+      <p>All Countries List</p>
+    </div>
+
+    <div class="row m-5">
+        <div class="col-sm-4 mb-5" *ngFor="let countrys of countries">
+          <div class="card" >
+            <img src={{countrys.image}} class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Country : {{countrys.country}}</h5>
+              <p class="card-text">Area : {{countrys.area|larea}}</p>
+              <p class="card-text"><small class="text-muted">GDP : {{countrys.GDP | curr}}</small></p>
+              <a href="#" class="btn btn-primary" (click)="sdetailCountry(countrys.country,3)">Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+  <div *ngSwitchCase="3">
+    <app-detail-country [selectedCountry]="selectCountry" [countries]="countries" [menus]="menus" [homes]="homes"
+      (changeSubMenu)="changeMenus($event,2)"></app-detail-country>
+  </div>
+</div>
+
+
+
+
